@@ -5,3 +5,5 @@ This is a secure desktop application that stores PDF files in a local encrypted 
 
 Current Status
 This project is under development. Face recognition and file handling features are in place, and more improvements are being added.
+
+02/07/25- webcam feature checked and fae recongition module have tested okay.
