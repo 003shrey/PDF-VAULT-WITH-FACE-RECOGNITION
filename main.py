@@ -6,23 +6,24 @@ import face_recognition
 import cv2
 import os
 
-# Face verify function
+# Face verify func is here - (yha pe try and except se error handling krte hue  face verify hoga)
 def verify_face():
     try:
-        # Known image load karo
+        # Known image load karo 2 variable leke known_image and known_encoding leke
+        
         known_image = face_recognition.load_image_file("known_faces/shreyansh.jpg")
         known_encoding = face_recognition.face_encodings(known_image)[0]
     except:
         messagebox.showerror("Error", "Known face not found. Please capture your face first.")
         return False
 
-    # Webcam se image lo
+    # Webcam se image lo- yha pe capture hoga
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cap.release()
-
+    # yha pe error show hua access ka ni
     if not ret:
-        messagebox.showerror("Error", "Webcam access failed")
+        messagebox.showerror("Error", "Webcam access failed- permission dede ya dekh kaha dikkat hain")
         return False
 
     # Resize karke recognition karo
