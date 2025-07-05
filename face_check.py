@@ -1,9 +1,10 @@
 # face recognise yha karte hain
-
+#important libraries import krlo, pur face recognition ke liye python ka 3.10.x version is required
 import face_recognition
 import cv2
 import os
 
+#yha pe face verify ka code hai
 def verify_face():
     known_image = face_recognition.load_image_file("known_faces/shreyansh.jpg")
     known_encoding = face_recognition.face_encodings(known_image)[0]
@@ -15,7 +16,7 @@ def verify_face():
         print(" web cam ni khula")
         return False
 
-    # Resize for faster processing
+    # Resize for faster processing- optimizing thodi se keh hain
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
     rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
