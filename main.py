@@ -6,29 +6,30 @@ import face_recognition
 import cv2
 import os
 
-# Face verify function
+# yeh function face verify karta hai webcam se
 def verify_face():
     try:
-        # Known image load karo
-        known_image = face_recognition.load_image_file("known_faces/shreyansh.jpg")
+        # stored face image ko load karte hain
+        known_image = face_recognition.load_image_file("known_faces/shreyansh_fixed.jpg")
         known_encoding = face_recognition.face_encodings(known_image)[0]
     except:
-        messagebox.showerror("Error", "Known face not found. Please capture your face first.")
+        messagebox.showerror("Error", "Face image nahi mila. Pehle face capture karo.")
         return False
 
-    # Webcam se image lo
+    # webcam se ek frame lete hain
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cap.release()
 
     if not ret:
-        messagebox.showerror("Error", "Webcam access failed")
+        messagebox.showerror("Error", "Webcam ka access nahi mila.")
         return False
 
-    # Resize karke recognition karo
+    # frame ko chhota karke RGB mein convert karte hain
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
     rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
+    # webcam frame se face encoding nikalte hain
     face_locations = face_recognition.face_locations(rgb_small_frame)
     face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
 
@@ -39,34 +40,65 @@ def verify_face():
 
     return False
 
-# Vault kholne ka GUI
+# agar face match hota hai, toh vault ka GUI open hota hai
 def open_vault():
     vault_window = tk.Toplevel()
     vault_window.title("PDF Vault")
     vault_window.geometry("400x300")
     vault_window.configure(bg="black")
 
-    tk.Label(vault_window, text="Welcome to your Vault!", font=("Arial", 16), fg="white", bg="black").pack(pady=20)
+    tk.Label(
+        vault_window,
+        text="Welcome to your Vault!",
+        font=("Segoe UI", 16, "bold"),
+        fg="white",
+        bg="black"
+    ).pack(pady=40)
 
-    # TODO: Upload / View / Delete PDF buttons yahan aayenge
-    tk.Button(vault_window, text="Close Vault", command=vault_window.destroy).pack(pady=10)
+    # aage chal kar yahan Upload, View, Delete buttons add karenge
+    tk.Button(
+        vault_window,
+        text="Close Vault",
+        font=("Segoe UI", 12),
+        command=vault_window.destroy,
+        bg="gray20",
+        fg="white",
+        padx=10,
+        pady=5
+    ).pack(pady=10)
 
-# Login button ke liye action
+# jab user "Unlock Vault" dabata hai
 def login():
     result = verify_face()
     if result:
-        messagebox.showinfo("Access Granted", "Face recognized. Welcome!")
+        messagebox.showinfo("Access Granted", "Face match ho gaya. Vault khul raha hai.")
         open_vault()
     else:
-        messagebox.showerror("Access Denied", "Face not matched. Try again.")
+        messagebox.showerror("Access Denied", "Face match nahi hua. Phir se try karo.")
 
-# GUI start
+# main login window
 root = tk.Tk()
 root.title("Secure PDF Vault")
 root.geometry("300x200")
 root.configure(bg="black")
 
-tk.Label(root, text="Login with Face", font=("Arial", 14), fg="white", bg="black").pack(pady=30)
-tk.Button(root, text="Unlock Vault", command=login).pack(pady=10)
+tk.Label(
+    root,
+    text="Login with Face",
+    font=("Segoe UI", 14, "bold"),
+    fg="white",
+    bg="black"
+).pack(pady=30)
+
+tk.Button(
+    root,
+    text="Unlock Vault",
+    font=("Segoe UI", 12),
+    command=login,
+    bg="gray20",
+    fg="white",
+    padx=10,
+    pady=5
+).pack(pady=10)
 
 root.mainloop()
