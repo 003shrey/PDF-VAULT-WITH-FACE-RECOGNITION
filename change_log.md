@@ -6,3 +6,6 @@
 
 
 12/07/25- Integrated the face_check.py module with the main.py GUI to enable secure face recognition-based authentication using OpenCV and the face_recognition library. Refactored the GUI logic to trigger facial verification before granting access to the vault. Ensured modular separation of concerns for better maintainability. The face data is now loaded from a known image (shreyansh_fixed.jpg) stored in the known_faces/ directory. (still some function like open vault is not working it is still to be worked on)
+
+
+17/07/25 - Face_check.py is updated
