@@ -18,17 +18,7 @@ The application is currently under development. More features and improvements a
 - dlib
 - Tkinter
 
-## Project Structure
 
-.
-├── main.py               # GUI and application flow
-├── face_check.py         # Face recognition logic
-├── capture_face.py       # Utility to save known face
-├── vault/                # Directory to store PDFs
-├── known_faces/          # Stores known face image (e.g. shreyansh_fixed.jpg)
-├── requirements.txt      # Required Python packages
-├── change_log.md         # Development progress log
-└── README.md             # Project documentation (this file)
 
 ## Upcoming Features
 
@@ -41,3 +31,9 @@ The application is currently under development. More features and improvements a
 ## Status
 
 Under development. Not ready for production use.
+
+
+## License
+
+This project is open-sourced under the **MIT License**.  
+Feel free to use, modify, and share as needed.
