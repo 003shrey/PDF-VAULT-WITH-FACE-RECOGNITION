@@ -9,3 +9,5 @@
 
 
 17/07/25 - Face_check.py is updated
+
+27/07/25 The project has run into complication, i have to make changes to tech stack, since face_recognition module support Python 2.10.x version, and I am sick of creating virtual environ, *I have decide to shift to DEEPFACE module of python for the same functionality, we will soon see the end of this project*
