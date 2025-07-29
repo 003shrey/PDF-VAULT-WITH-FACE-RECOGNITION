@@ -5,7 +5,7 @@ The application is currently under development. More features and improvements a
 
 ## Current Features
 
-- Face recognition-based login using webcam
+- DeepFace  login using webcam
 - Basic Tkinter-based GUI interface
 - Modular code: separate logic for GUI and face verification
 - Known face stored locally and matched in real-time
@@ -14,8 +14,7 @@ The application is currently under development. More features and improvements a
 
 - Python 3.12
 - OpenCV
-- face_recognition
-- dlib
+- deepface
 - Tkinter
 
 
