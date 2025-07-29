@@ -1,4 +1,4 @@
-face_recognition
+deepface
 opencv-python
 cryptography
 tk
